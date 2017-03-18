@@ -13,7 +13,7 @@ export class AppComponent {
   
   constructor(private frameworkConfigService: FrameworkConfigService){
 
-    let config: FrameworkConfigSettings ={
+    let config: FrameworkConfigSettings = {
         showLanguageSelector : true,
         showStatusBar: true,
         showUserControls: true,
@@ -25,7 +25,6 @@ export class AppComponent {
         ]
     }
     frameworkConfigService.configure(config);
-
   }
-  
+
 }
