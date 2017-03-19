@@ -3,6 +3,10 @@ import { Component } from '@angular/core';
 import {FrameworkConfigService} from '../fw/service/framework-config.service';
 import {FrameworkConfigSettings} from '../fw/models/FrameworkConfigSettings';
 import {IconFiles} from '../fw/models/IconFiles';
+import {menuItemsConfig} from './app.menu';
+import {MenuService} from '../fw/service/menu.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -11,7 +15,7 @@ import {IconFiles} from '../fw/models/IconFiles';
 })
 export class AppComponent {
   
-  constructor(private frameworkConfigService: FrameworkConfigService){
+  constructor(private frameworkConfigService: FrameworkConfigService, menuService: MenuService){
 
     let config: FrameworkConfigSettings = {
         showLanguageSelector : true,
@@ -25,6 +29,7 @@ export class AppComponent {
         ]
     }
     frameworkConfigService.configure(config);
+    menuService.Items = menuItemsConfig;
   }
 
 }
