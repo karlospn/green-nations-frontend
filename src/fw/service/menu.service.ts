@@ -11,5 +11,10 @@ export class MenuService {
     public toggleLeftSideMenu() : void{
         if(this.showingLeftSideMenu) this.showingLeftSideMenu = false;
         else this.showingLeftSideMenu = true;
+        console.log(this.showingLeftSideMenu);
+    }
+
+    public toggleMenu() : void {
+        this.isVertical = !this.isVertical;
     }
 }
