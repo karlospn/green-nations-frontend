@@ -14,3 +14,12 @@ ul {
 li {
     display: inline;
 }
+
+:host(.vertical-menu){
+    display: inline-block;
+    width: 200px;
+    padding-left: 4px;
+    flex-grow: 0;
+    background-color: #555;
+    overflow: auto;
+}
