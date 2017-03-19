@@ -10,6 +10,9 @@ import { StatusBarComponent } from './status-bar/status-bar.component';
 import { ScreenService } from './service/screen.service';
 import { FrameworkConfigService } from './service/framework-config.service';
 
+import {ScreenLargeDirective} from './directives/screen-large.directive';
+import {ScreenBelowLargeDirective} from './directives/screen-below-large.directive';
+
 @NgModule({
   imports: [
     CommonModule
@@ -19,7 +22,9 @@ import { FrameworkConfigService } from './service/framework-config.service';
     ContentComponent,
     TitleBarComponent,
     TopBarComponent,
-    StatusBarComponent
+    StatusBarComponent,
+    ScreenBelowLargeDirective,
+    ScreenLargeDirective
   ],  
   providers: [
     FrameworkConfigService,
