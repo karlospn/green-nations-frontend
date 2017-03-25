@@ -12,6 +12,7 @@ import { MenuComponent } from './menus/menu/menu.component';
 import { MenuItemComponent } from './menus/menu-item/menu-item.component';
 import { PopupMenuComponent } from './menus/popup-menu/popup-menu.component';
 import { SignInComponent } from './users/sign-in/sign-in.component';
+import { RegisterUserComponent } from './users/register-user/register-user.component';
 
 import { ScreenService } from './service/screen.service';
 import { FrameworkConfigService } from './service/framework-config.service';
@@ -38,7 +39,8 @@ import {ScreenBelowLargeDirective} from './directives/screen-below-large.directi
     MenuComponent,
     MenuItemComponent,
     PopupMenuComponent,
-    SignInComponent
+    SignInComponent,
+    RegisterUserComponent
   ],  
   providers: [
     FrameworkConfigService,
