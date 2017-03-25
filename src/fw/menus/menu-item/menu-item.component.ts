@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostBinding, HostListener, ElementRef, Renderer } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { MenuItem } from '../../models/MenuItem';
 import { MenuService } from '../../service/menu.service';
@@ -9,8 +9,7 @@ import { MenuService } from '../../service/menu.service';
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.css']
 })
-export class MenuItemComponent {
-
+export class MenuItemComponent implements OnInit {
   @Input() item: MenuItem;
 
   @HostBinding('class.parent-is-popup')
@@ -23,6 +22,20 @@ export class MenuItemComponent {
   popupTop = 34;
 
   constructor(private router: Router, private menuService: MenuService, private renderer : Renderer, private el : ElementRef) { }
+
+  ngOnInit(): void {
+    this.checkRoute(this.router.url);
+
+    this.router.events.subscribe((event) =>  {
+          if(event instanceof NavigationEnd){
+            this.checkRoute(event.url);
+          }
+      });
+  }
+
+  checkRoute(route : string){
+    this.isActiveRoute = (route == "/" + this.item.route)
+  }
 
   onPopupMouseEnter($event){
     if(!this.menuService.isVertical)
