@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, HostListener, ElementRef, Renderer } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MenuItem } from '../../models/MenuItem';
@@ -22,7 +22,7 @@ export class MenuItemComponent {
   popupLeft = 0;
   popupTop = 34;
 
-  constructor(private router: Router, private menuService: MenuService) { }
+  constructor(private router: Router, private menuService: MenuService, private renderer : Renderer, private el : ElementRef) { }
 
   onPopupMouseEnter($event){
     if(!this.menuService.isVertical)
@@ -64,12 +64,18 @@ export class MenuItemComponent {
 
   @HostListener('click', ['$event'])
   onClick(event) : void {
+
+    event.stopPropagation();
+    
     if(this.item.subMenu)
     {
-
+      if(this.menuService.isVertical)
+        this.mouseInPopup =  !this.mouseInPopup;
     }
     else if (this.item.route)
     {
+      let mouseEvent = new MouseEvent('mouseleave', {bubbles : true});
+      this.renderer.invokeElementMethod(this.el.nativeElement, 'dispatchEvent', [mouseEvent]);
       this.router.navigate(['/' + this.item.route]);
     }
   }
