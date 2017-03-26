@@ -45,12 +45,25 @@ export class CountryDetailComponent implements OnInit {
 
   ngOnInit() {
     this.operation = this.activatedRoute.snapshot.params['operation'];
-    this.appDataService.getCountriesById(this.activatedRoute.snapshot.params['id']).subscribe((data) => this.country = data);
+    if(this.operation === 'create')
+    {
+      this.country = {id: 0, name: "", epiIndex: null};
+    }
+    else{
+      this.appDataService.getCountriesById(this.activatedRoute.snapshot.params['id']).subscribe((data) => this.country = data);
+    }
   }
 
   updateCountry(country : Country) {
     this.errorMessage = null;
     this.appDataService.updateCountry(country).subscribe(
+      data => this.router.navigate(['authenticated/country-maint']),
+      err => this.errorMessage = 'Error updating country');
+  }
+
+    createCountry(country : Country) {
+    this.errorMessage = null;
+    this.appDataService.createCountry(country).subscribe(
       data => this.router.navigate(['authenticated/country-maint']),
       err => this.errorMessage = 'Error updating country');
   }

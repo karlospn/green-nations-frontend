@@ -17,6 +17,7 @@ export class DynamicFormComponent implements OnInit {
   @Input() operation: string;
   @Input() errorMessage: string;
   @Output() update: EventEmitter<any> = new EventEmitter();
+  @Output() create: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
   vmCopy : any;
@@ -62,6 +63,16 @@ export class DynamicFormComponent implements OnInit {
       this.status = 'waiting';
       this.update.emit(this.form.value);
     }
+  }
+
+  onCreate() {
+    this.submitted = true;
+    if(this.form.valid)
+    {
+      this.status = 'waiting';
+      this.create.emit(this.form.value);
+    }
+
   }
 
 }

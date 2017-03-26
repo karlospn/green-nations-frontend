@@ -26,4 +26,8 @@ export class CountryMaintComponent implements OnInit {
     this.router.navigate(['/authenticated/country-detail', id, 'edit']);    
   }
 
+  addNewCountry() {
+    this.router.navigate(['/authenticated/country-detail', 0, 'create']);
+  }
+
 }

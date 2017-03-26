@@ -40,4 +40,12 @@ export class AppDataService {
         return Observable.of(country).delay(2000);
     }
 
+    createCountry(vm: Country): Observable<any> {
+        let id = 0;
+        this.countries.forEach(c => { if (c.id >= id) id = c.id+1 });
+        vm.id = id;
+        this.countries.push(vm);
+        return Observable.of(vm);
+    }
+
 }
