@@ -4,6 +4,9 @@ import {ActivatedRoute } from '@angular/router';
 import {Country} from '../view-models/country';
 import { AppDataService } from '../services/app-data.service';
 
+import { FieldDefinition } from '../../fw/dynamic-forms/field-definition';
+
+
 @Component({
   selector: 'app-country-detail',
   templateUrl: './country-detail.component.html',
@@ -11,11 +14,37 @@ import { AppDataService } from '../services/app-data.service';
 })
 export class CountryDetailComponent implements OnInit {
 
+  operation: string;
+  errorMessage: string;
   country : Country;
+  contryDefinition : Array<FieldDefinition> = [
+    {
+      key : 'id',
+      type: 'number',
+      isId: true,
+      label: 'Id',
+      required: true
+    },
+    {
+      key : 'name',
+      type: 'string',
+      isId: false,
+      label: 'Name',
+      required: true
+    },
+    {
+      key : 'epiIndex',
+      type: 'number',
+      isId: false,
+      label: 'EPI Index',
+      required: true
+    }
+  ];
 
   constructor(private appDataService : AppDataService, private activatedRoute : ActivatedRoute) { }
 
   ngOnInit() {
+    this.operation = this.activatedRoute.snapshot.params['operation'];
     this.appDataService.getCountriesById(this.activatedRoute.snapshot.params['id']).subscribe((data) => this.country = data);
   }
 

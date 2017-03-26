@@ -12,7 +12,6 @@ import { Country } from '../view-models/country';
 export class CountryMaintComponent implements OnInit {
 
   countries : Array<Country>;
-
   constructor(private appDataService : AppDataService, private router: Router) { }
 
   ngOnInit() {
