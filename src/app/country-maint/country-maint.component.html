@@ -15,7 +15,7 @@
       <td>{{item.id}}</td>
       <td>{{item.name}}</td>
       <td>{{item.epiIndex}}</td>
-      <td>
+      <td *ngIf="deleteId != item.id">
         <button class="btn btn-sm btn-primary"
           (click)="showDetailsCountry(item.id)">
           Details
@@ -24,9 +24,19 @@
           (click)="editDetailsContry(item.id)">
           Edit
         </button>
-        <button class="btn btn-sm btn-danger">
+        <button class="btn btn-sm btn-danger"
+          (click)="deleteCountryQuestion(item.id)">
           Delete
         </button>
+      </td>
+      <td *ngIf="item.id === deleteId && !isDeleting">
+        Delete this country?
+        <button class="btn btn-sm" (click)="cancelDelete()">Cancel</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteCountry(item.id)">Delete</button>
+        <p *ngIf="deleteError"> {{ deleteError }}</p>
+      </td>
+      <td *ngIf="item.id === deleteId && isDeleting">
+        Deleting...
       </td>
     </tr>
   </tbody>

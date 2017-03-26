@@ -48,4 +48,10 @@ export class AppDataService {
         return Observable.of(vm);
     }
 
+    deleteCountry(id:number) : Observable<any> {
+        var countryIndex = this.countries.findIndex(x => x.id == id);
+        this.countries.splice( countryIndex,1);
+        return Observable.of({}).delay(2000);
+    }
+
 }

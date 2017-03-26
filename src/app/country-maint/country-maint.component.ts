@@ -12,6 +12,10 @@ import { Country } from '../view-models/country';
 export class CountryMaintComponent implements OnInit {
 
   countries : Array<Country>;
+  isDeleting : boolean = false;
+  deleteId: number;
+  deleteError : string;
+
   constructor(private appDataService : AppDataService, private router: Router) { }
 
   ngOnInit() {
@@ -28,6 +32,21 @@ export class CountryMaintComponent implements OnInit {
 
   addNewCountry() {
     this.router.navigate(['/authenticated/country-detail', 0, 'create']);
+  }
+
+  deleteCountryQuestion(id: number){
+    this.deleteError = null;
+    this.deleteId = id;
+  }
+
+  cancelDelete() {
+    this.isDeleting = false;
+    this.deleteId = null;
+  }
+
+  deleteCountry (id: number){
+    this.isDeleting = true;
+    this.appDataService.deleteCountry(id).subscribe(data => this.cancelDelete(), err => { this.deleteError = err; this.isDeleting = false;})
   }
 
 }
