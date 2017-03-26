@@ -22,4 +22,8 @@ export class CountryMaintComponent implements OnInit {
     this.router.navigate(['/authenticated/country-detail', id, 'details']);
   }
 
+  editDetailsContry(id : number){
+    this.router.navigate(['/authenticated/country-detail', id, 'edit']);    
+  }
+
 }

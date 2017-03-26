@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import {Country} from '../view-models/country';
 import { AppDataService } from '../services/app-data.service';
@@ -41,11 +41,18 @@ export class CountryDetailComponent implements OnInit {
     }
   ];
 
-  constructor(private appDataService : AppDataService, private activatedRoute : ActivatedRoute) { }
+  constructor(private appDataService : AppDataService, private activatedRoute : ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.operation = this.activatedRoute.snapshot.params['operation'];
     this.appDataService.getCountriesById(this.activatedRoute.snapshot.params['id']).subscribe((data) => this.country = data);
+  }
+
+  updateCountry(country : Country) {
+    this.errorMessage = null;
+    this.appDataService.updateCountry(country).subscribe(
+      data => this.router.navigate(['authenticated/country-maint']),
+      err => this.errorMessage = 'Error updating country');
   }
 
 }
