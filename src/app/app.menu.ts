@@ -5,7 +5,7 @@ export let menuItemsConfig: Array<MenuItem> =
     {
         text: 'Dashboard',
         icon: 'glyphicon-dashboard',
-        route: '/dashboard',
+        route: '/authenticated/dashboard',
         subMenu: null
     },
     {
@@ -21,19 +21,19 @@ export let menuItemsConfig: Array<MenuItem> =
                     {
                         text: 'USA',
                         icon: 'glyphicon-flag',
-                        route: 'country-detail/USA',
+                        route: '/authenticated/country-detail/USA',
                         subMenu: null
                     },
                     {
                         text: 'India',
                         icon: 'glyphicon-flag',
-                        route: 'country-detail/India',
+                        route: '/authenticated/country-detail/India',
                         subMenu: null
                     },
                     {
                         text: 'Switzerland',
                         icon: 'glyphicon-flag',
-                        route: 'country-detail/Switzerland',
+                        route: '/authenticated/country-detail/Switzerland',
                         subMenu: null
                     }
                 ]
@@ -41,19 +41,19 @@ export let menuItemsConfig: Array<MenuItem> =
             {
                 text: 'Top 3',
                 icon: 'glyphicon-flag',
-                route: 'country-list/3',
+                route: '/authenticated/country-list/3',
                 subMenu: null
             },
             {
                 text: 'Top 10',
                 icon: 'glyphicon-flag',
-                route: 'country-list/10',
+                route: '/authenticated/country-list/10',
                 subMenu: null
             },
             {
                 text: 'All',
                 icon: 'glyphicon-flag',
-                route: 'country-list/0',
+                route: '/authenticated/country-list/0',
                 subMenu: null
             }
         ]
@@ -66,13 +66,13 @@ export let menuItemsConfig: Array<MenuItem> =
             {
                 text: 'Country List',
                 icon: 'glyphicon-th-list',
-                route: 'country-maint',
+                route: '/authenticated/country-maint',
                 subMenu: null
             },
             {
                 text: 'Settings',
                 icon: 'glyphicon-cog',
-                route: 'settings',
+                route: '/authenticated/settings',
                 subMenu: null
             }
         ]

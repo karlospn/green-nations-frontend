@@ -8,17 +8,22 @@ import {CountryDetailComponent} from './country-detail/country-detail.component'
 import {AuthenticatedUserComponent} from './authenticated-user/authenticated-user.component';
 import {SignInComponent} from '../fw/users/sign-in/sign-in.component';
 import {RegisterUserComponent} from '../fw/users/register-user/register-user.component';
+import {AuthGuardService} from './services/auth-guard.service';
 
 
 export const appRoutes : Routes = [
     {path: 'signin', component: SignInComponent},
-    {path: 'authenticated', component: AuthenticatedUserComponent,
-        children: [
-            {path: 'country-list/:count', component: CountryListComponent},
-            {path: 'country-detail/:country', component: CountryDetailComponent},
-            {path: 'country-maint', component: CountryMaintComponent},
-            {path: 'dashboard', component: DashboardComponent},
-            {path: 'settings', component: SettingsComponent},
+    {path: 'authenticated', component: AuthenticatedUserComponent, canActivate: [AuthGuardService],
+        children : [
+            { path: '', canActivateChild: [AuthGuardService],
+                children: [
+                {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+                {path: 'country-list/:count', component: CountryListComponent},
+                {path: 'country-detail/:country', component: CountryDetailComponent},
+                {path: 'country-maint', component: CountryMaintComponent},
+                {path: 'dashboard', component: DashboardComponent},
+                {path: 'settings', component: SettingsComponent},
+            ]}
         ]
     },
     {path: 'register', component: RegisterUserComponent},

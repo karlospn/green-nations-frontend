@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class UserService implements UserApi {
 
-    private isAuthenticated : boolean = false;
+    public isAuthenticated : boolean = false;
     
     constructor(){}
     
