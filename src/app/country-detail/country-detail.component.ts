@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute } from '@angular/router';
+
+import {Country} from '../view-models/country';
+import { AppDataService } from '../services/app-data.service';
 
 @Component({
   selector: 'app-country-detail',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountryDetailComponent implements OnInit {
 
-  constructor() { }
+  country : Country;
+
+  constructor(private appDataService : AppDataService, private activatedRoute : ActivatedRoute) { }
 
   ngOnInit() {
+    this.appDataService.getCountriesById(this.activatedRoute.snapshot.params['id']).subscribe((data) => this.country = data);
   }
 
 }

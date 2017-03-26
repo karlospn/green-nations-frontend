@@ -15,6 +15,7 @@ export class UserService implements UserApi {
     signIn(username: string, password: string, rememberMe: boolean): Observable<any> {
         this.isAuthenticated = true;
         this.userName = username;
+        //BACKEND CALL
         return Observable.of({});
     }
 
@@ -22,7 +23,8 @@ export class UserService implements UserApi {
     signOut() : Observable<any>{
         this.isAuthenticated = false;
         this.userName = null;
-        this.router.navigate(['/signin'])
+        this.router.navigate(['/signin']);
+        //BACKEND CALL
         return Observable.of({});
     }
 
