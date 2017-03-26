@@ -10,5 +10,6 @@
 </div>
 
 <div *ngIf="frameWorkConfigService.showUserControls">
-  SIGN IN
+  <span>{{username}}</span>
+  <span class="sign-out" (click)="signOut()">SIGN OUT</span>
 </div>
