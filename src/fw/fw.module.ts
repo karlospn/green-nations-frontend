@@ -15,6 +15,7 @@ import { SignInComponent } from './users/sign-in/sign-in.component';
 import { RegisterUserComponent } from './users/register-user/register-user.component';
 import { DynamicFormComponent } from './dynamic-forms/dynamic-form/dynamic-form.component';
 import { DynamicFieldComponent } from './dynamic-forms/dynamic-field/dynamic-field.component';
+import { PanelComponent } from './panel/panel.component';
 
 import { ScreenService } from './service/screen.service';
 import { FrameworkConfigService } from './service/framework-config.service';
@@ -45,7 +46,8 @@ import {ScreenBelowLargeDirective} from './directives/screen-below-large.directi
     SignInComponent,
     RegisterUserComponent,
     DynamicFormComponent,
-    DynamicFieldComponent
+    DynamicFieldComponent,
+    PanelComponent
   ],  
   providers: [
     FrameworkConfigService,
@@ -54,7 +56,8 @@ import {ScreenBelowLargeDirective} from './directives/screen-below-large.directi
   ],
   exports: [
     FrameworkBodyComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    PanelComponent
   ]
 })
 export class FwModule { }
