@@ -57,7 +57,9 @@ import {ScreenBelowLargeDirective} from './directives/screen-below-large.directi
   exports: [
     FrameworkBodyComponent,
     DynamicFormComponent,
-    PanelComponent
+    PanelComponent,
+    ScreenLargeDirective,
+    ScreenBelowLargeDirective
   ]
 })
 export class FwModule { }

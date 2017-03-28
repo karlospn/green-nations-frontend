@@ -30,14 +30,9 @@ export class CountryListComponent implements OnInit {
 
   private getCountriesToShow() {
     if(this.count > 0) {
-      this.countriesToShow = this.countries.splice(0, this.count);
+      this.countriesToShow = this.countries.slice(0, this.count);
     } else {
       this.countriesToShow = this.countries;
     }
   }
-
-
-
-
-
 }
