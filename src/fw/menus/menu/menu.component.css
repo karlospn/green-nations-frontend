@@ -1,8 +1,18 @@
 :host {
-    display: flex;
-    align-items: flex-end;
+    display: flex; 
+    align-items: flex-end; 
     justify-content: flex-end;
     flex-grow: 1;
+}
+
+:host(.vertical-menu) {
+    display: inline-block;
+    max-width: 200px;
+    min-width: 200px;
+    padding-left: 4px;
+    flex-grow: 0;
+    background-color: #555;
+    overflow: auto;
 }
 
 ul {
@@ -15,19 +25,9 @@ li {
     display: inline;
 }
 
-:host(.vertical-menu){
-    display: inline-block;
-    width: 200px;
-    padding-left: 4px;
-    flex-grow: 0;
-    background-color: #555;
-    overflow: auto;
-}
-
 button {
     margin-top: 20px;
 }
-
 button.horizontal {
     margin-left: 20px;
     margin-bottom: 2px;
